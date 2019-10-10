@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">APIDrive</string>
+    <string name="btnGetJson">Consultar Información</string>
 </resources>
