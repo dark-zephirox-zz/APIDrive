@@ -101,7 +101,12 @@ public class MainActivity extends AppCompatActivity {
                     Integer totJsonValues = jsonObj.getJSONObject("feed").getJSONObject("openSearch$totalResults").getInt("$t");
                     JSONArray jsonRealData = jsonObj.getJSONObject("feed").getJSONArray("entry");
                     for (int i = 0; i < totJsonValues; i++) {
-
+                        JSONObject data = jsonRealData.getJSONObject(i);
+                        String id = data.getJSONObject("gsx$id").getString("$t");
+                        String name = data.getJSONObject("gsx$name").getString("$t");
+                        String document = data.getJSONObject("gsx$document").getString("$t");
+                        String telephone = data.getJSONObject("gsx$telephone").getString("$t");
+                        Toast.makeText(MainActivity.this,id+ " - " +name+ " - " +document+ " - " +telephone,Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
