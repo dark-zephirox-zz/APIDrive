@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">APIDrive</string>
-    <string name="btnGetJson">Consultar Información</string>
+    <string name="btnGetJson">Consultar</string>
     <string name="btnLoading">Cargando...</string>
 </resources>
