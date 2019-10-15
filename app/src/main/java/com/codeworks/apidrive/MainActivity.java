@@ -102,28 +102,25 @@ public class MainActivity extends AppCompatActivity {
             btnGetJson.setEnabled(true);
             strJson = result;
             ArrayList<HashMap<String, String>> personasList = new ArrayList<>();
-            ListView listPersonas = (ListView) findViewById(R.id.lvPersonas);
+            final ListView listPersonas = (ListView) findViewById(R.id.lvPersonas);
             listPersonas.setAdapter(null);
-
             if (strJson != null) {
                 try {
                     JSONObject jsonObj = new JSONObject(strJson);
                     Integer totJsonValues = jsonObj.getJSONObject("feed").getJSONObject("openSearch$totalResults").getInt("$t");
                     JSONArray jsonRealData = jsonObj.getJSONObject("feed").getJSONArray("entry");
                     for (int i = 0; i < totJsonValues; i++) {
-                        HashMap<String,String> persona = new HashMap<>();
+                        final HashMap<String,String> persona = new HashMap<>();
                         JSONObject data = jsonRealData.getJSONObject(i);
                         String id = data.getJSONObject("gsx$id").getString("$t");
                         String name = data.getJSONObject("gsx$name").getString("$t");
                         String document = data.getJSONObject("gsx$document").getString("$t");
                         String telephone = data.getJSONObject("gsx$telephone").getString("$t");
                         persona.put("id",id);
-                        persona.put("name",name);
-                        persona.put("document",document);
-                        persona.put("telephone",telephone);
+                        persona.put("data",name+ " - " +document+ " - " +telephone);
                         personasList.add(persona);
                     }
-                    ListAdapter adapter = new SimpleAdapter(this, personasList,R.layout.list_row_personas,new String[]{"list_id_personas","list_data_personas"}, new int[]{R.id.list_id_personas,R.id.list_data_personas});
+                    ListAdapter adapter = new SimpleAdapter(MainActivity.this, personasList, R.layout.list_row_personas,new String[]{"data"}, new int[]{R.id.list_data_personas});
                     listPersonas.setAdapter(adapter);
                 } catch (JSONException e) {
                     e.printStackTrace();
