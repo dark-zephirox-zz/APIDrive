@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -122,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                         persona.put("telephone",telephone);
                         personasList.add(persona);
                     }
-                    ListAdapter adapter = new SimpleAdapter(this, personasList, R.layout.list_row_personas,new String[]{"list_data_personas"}, new int[]{R.id.list_data_personas});
+                    ListAdapter adapter = new SimpleAdapter(this, personasList,R.layout.list_row_personas,new String[]{"list_id_personas","list_data_personas"}, new int[]{R.id.list_id_personas,R.id.list_data_personas});
                     listPersonas.setAdapter(adapter);
                 } catch (JSONException e) {
                     e.printStackTrace();
